@@ -31,12 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _Logo(
-            onTap: newVideoTap,
-          ),
-          const _AppName()
-        ],
+        children: [_Logo(onTap: newVideoTap), const _AppName()],
+      ),
+    );
+  }
+
+  Widget renderVideo() {
+    return Center(
+      child: CustomVideoPlayer(
+        video: video!,
+        onNewVideoPressed: newVideoTap,
       ),
     );
   }
@@ -48,15 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
         this.video = video;
       });
     }
-  }
-
-  Widget renderVideo() {
-    return Center(
-      child: CustomVideoPlayer(
-        video: video!,
-        onNewVideoPressed: newVideoTap,
-      ),
-    );
   }
 }
 
@@ -75,7 +70,7 @@ class _AppName extends StatelessWidget {
           "VIDEO",
           style: textStyle,
         ),
-        Text("PLAYER", style: textStyle.copyWith(fontWeight: FontWeight.w700))
+        Text("PLAYER", style: textStyle.copyWith(fontWeight: FontWeight.w700)),
       ],
     );
   }
